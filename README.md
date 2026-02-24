@@ -1,60 +1,87 @@
-# THE DRONE SHOT  
-**Elevated Perspective**
+<div align="center">
 
-Moderne, cinematic Portfolio-Website für Drohnenfotografie und FPV-Videografie.  
-Branding, Design und Code by **Marco Fritsche**.
+# 🚁 THE DRONE SHOT  
+### Cinematic FPV • Aerial Photography • Creative Vision  
+**by Marco Fritsche**
+
+</div>
 
 ---
 
-## 🎨 Brand Identity
 
-Die Website basiert auf dem offiziellen Logo von *the.drone.shot*  
-und verwendet folgende Primärfarben:
+# The Drone Shot – Portfolio Website
 
-- **Blau (#4DA3FF)** – Akzentfarbe, modern & technisch  
-- **Steel Blue (#1F2A38)** – dunkler metallischer Grundton  
-- **Graphite (#2E2E2E)** – UI-Elemente  
-- **Weiß (#FFFFFF)** – Typografie & Kontrast  
+Dies ist die offizielle Portfolio‑Website von **The Drone Shot**, entwickelt von Marco Fritsche.  
+Die Seite präsentiert hochwertige Drohnenaufnahmen, Cinematic‑Videos, Projekte und Kontaktmöglichkeiten in einem modernen, dunklen UI‑Design mit FPV‑Effekten und subtilen Animationen.
 
 ---
 
 ## 🚁 Features
 
-- Fullscreen Hero-Video  
-- Parallax-Scrolling (ähnlich festland.ch)  
-- Cinematic Fade-In Animationen  
-- Dynamische Portfolio-Galerie (JSON-basiert)  
-- Instagram-Integration  
-- Modularer Aufbau (HTML, CSS, JS, Components)  
-- Mobile-optimiert  
+### 🎥 Cinematic Hero Section
+- Hintergrundvideo im Fullscreen
+- Chromatic Lens Flare Effekt
+- FPV‑Micro‑Shake Animation
+- Dynamischer Glow‑Titel
+
+### 🖼 Portfolio Galerie
+- Responsive Grid‑Layout
+- Lightbox mit Navigation
+- Hover‑Zoom und Glow‑Effekte
+
+### 📩 Kontaktbereich
+- Klar strukturierter Kontakttext
+- Direktlink zur E‑Mail: `the.drone.shot@outlook.com`
+- Optionales Kontaktformular via Formspree
+- FPV‑Reveal Animation beim Scrollen
+
+### 🧭 Header & Navigation
+- Fixierter Header mit Blur‑Glass‑Effekt
+- Logo + Branding‑Text
+- Social Icons (Instagram etc.)
+- Hover‑Glow Animationen
+
+---
+
+## 🛠 Technologien
+
+- **HTML5**
+- **CSS3** (Custom Animations, Gradients, FPV‑Effects)
+- **JavaScript** (IntersectionObserver, Lightbox, Scroll‑Reveal)
+- **Formspree** (optional für Kontaktformular)
+- **Modulare Komponentenstruktur** (`/components/`)
 
 ---
 
 ## 📁 Projektstruktur
-the-drone-shot/ │ ├── index.html ├── /assets │   ├── /images │   ├── /videos │   ├── /icons │   └── /fonts ├── /css │   ├── variables.css │   ├── style.css │   └── animations.css ├── /js │   ├── main.js │   ├── parallax.js │   └── animations.js └── /components ├── header.html └── footer.html
+/assets /images /videos
+/components header.html contact.html footer.html
+/css style.css
+/js animations.js lightbox.js
+index.html README.md
 
 
 
 ---
 
-## 📸 Portfolio
+## ⚙️ Installation & Nutzung
 
-Die Galerie lädt automatisch alle Bilder aus  
-`assets/images/portfolio/portfolio.json`.
-
-Neue Bilder hinzufügen:  
-1. Datei in den Ordner legen  
-2. Dateiname in die JSON eintragen  
-→ Fertig.
+1. Repository klonen oder herunterladen  
+2. Projekt lokal öffnen  
+3. `index.html` im Browser starten  
+4. Optional: Formspree‑ID im Kontaktformular eintragen
 
 ---
 
-## 🔗 Social Media
+## ✉️ Kontakt
 
-Instagram: https://www.instagram.com/the.drone.shot/
+Für Anfragen, Projekte oder Kooperationen:
+
+**📧 the.drone.shot@outlook.com**
 
 ---
 
-## 📜 Lizenz
+## 📸 Credits
 
-Siehe `LICENSE.md`.
+Alle Bilder und Videos stammen von **The Drone Shot**  
+© 2026 – Alle Rechte vorbehalten.
