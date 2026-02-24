@@ -1,0 +1,16 @@
+:root {
+  --bg-dark: #0D1117;
+  --bg-darker: #0A0D12;
+
+  --primary-blue: #4DA3FF;
+  --steel-blue: #1F2A38;
+  --graphite: #2E2E2E;
+
+  --text-light: #FFFFFF;
+  --text-muted: #A8B3C1;
+
+  --font-main: 'Sora', 'Inter', sans-serif;
+
+  --radius: 10px;
+  --transition: 0.3s ease;
+}
