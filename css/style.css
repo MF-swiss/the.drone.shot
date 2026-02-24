@@ -90,12 +90,12 @@ a:hover {
 
 .social-link:hover {
   background: rgba(77, 163, 255, 0.2);
+  transform: scale(1.1);
 }
 
 .social-link img {
-  width: 20px;
-  height: 20px;
-  filter: invert(1);
+  width: 24px;
+  height: 24px;
 }
 
 /* ==================== HERO SECTION ==================== */
