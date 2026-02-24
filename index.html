@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>the.drone.shot</title>
+  <meta name="description" content="The Drone Shot - Cinematic FPV & Drohnenfotografie in der Schweiz. Immobilien, Events, Imagefilme und sociale Media Content.">
+  <meta name="keywords" content="Drohne, FPV, Fotografie, Schweiz, St. Gallen, Säntisblick, Säntis, kybun, Cinematic">
+  <meta property="og:title" content="The Drone Shot - Elevated Perspective">
+  <meta property="og:description" content="Professionelle Drohnenfotografie und FPV-Cinematic">
+  <meta property="og:type" content="website">
+  <title>the.drone.shot - Drohnenfotografie & FPV-Cinematic</title>
 
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/style.css">
@@ -23,8 +28,9 @@
 
   <!-- HERO SECTION -->
     <section class="hero">
-    <video autoplay muted loop class="hero-video">
+    <video autoplay muted loop class="hero-video" aria-label="FPV Drohnen Cinematic-Video">
         <source src="assets/videos/hero.mp4" type="video/mp4">
+        Dein Browser unterstützt HTML5 Videos nicht.
     </video>
 
     <div class="hero-overlay"></div>
@@ -58,10 +64,7 @@
   <section class="portfolio">
     <h2>Portfolio</h2>
     <div class="grid">
-      <img src="assets/images/sample1.jpg" class="fade-in">
-      <img src="assets/images/sample2.jpg" class="fade-in">
-      <img src="assets/images/sample3.jpg" class="fade-in">
-      <img src="assets/images/sample4.jpg" class="fade-in">
+      <!-- Bilder werden dynamisch aus portfolio.json geladen -->
     </div>
   </section>
 
@@ -79,27 +82,28 @@
         </p>
         </div>
 
-        <form class="contact-form">
+        <form class="contact-form" id="contactForm">
         <div class="form-row">
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="E-Mail" required>
+            <input type="text" placeholder="Name" name="name" required>
+            <input type="email" placeholder="E-Mail" name="email" required>
         </div>
 
-        <input type="text" placeholder="Projekt / Location" required>
+        <input type="text" placeholder="Projekt / Location" name="location" required>
 
-        <select required>
+        <select name="projectType" required>
             <option value="">Art des Projekts wählen</option>
-            <option>Immobilien</option>
-            <option>Event</option>
-            <option>Imagefilm</option>
-            <option>Social Media Content</option>
-            <option>FPV-Cinematic</option>
-            <option>Sonstiges</option>
+            <option value="immobilien">Immobilien</option>
+            <option value="event">Event</option>
+            <option value="imagefilm">Imagefilm</option>
+            <option value="social-media">Social Media Content</option>
+            <option value="fpv-cinematic">FPV-Cinematic</option>
+            <option value="sonstiges">Sonstiges</option>
         </select>
 
-        <textarea rows="4" placeholder="Kurzbeschreibung deines Projekts"></textarea>
+        <textarea rows="4" placeholder="Kurzbeschreibung deines Projekts" name="message"></textarea>
 
         <button type="submit" class="btn-primary">Anfrage senden</button>
+        <div id="formMessage" class="form-message" style="display: none;"></div>
         </form>
     </div>
     </section>

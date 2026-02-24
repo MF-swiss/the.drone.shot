@@ -1,4 +1,29 @@
-/* HEADER */
+/* ==================== BASE STYLES ==================== */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  font-family: var(--font-main);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: var(--text-light);
+}
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: #6bb3ff;
+}
+
+/* ==================== HEADER ==================== */
 .header {
   width: 100%;
   padding: 20px 40px;
@@ -44,4 +69,450 @@
 .brand-sub {
   font-size: 0.75rem;
   color: var(--text-muted);
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(77, 163, 255, 0.1);
+  transition: all var(--transition);
+}
+
+.social-link:hover {
+  background: rgba(77, 163, 255, 0.2);
+}
+
+.social-link img {
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 60px;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 13, 18, 0.4);
+  z-index: 1;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 0.95;
+  margin: 0;
+  animation: fpvShake 6s ease-in-out infinite;
+  position: relative;
+  display: inline-block;
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin: 20px 0;
+  letter-spacing: 2px;
+}
+
+.highlight {
+  color: var(--primary-blue);
+  font-weight: 800;
+  text-shadow: 0 0 20px rgba(77, 163, 255, 0.5);
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 12px 40px;
+  background: var(--primary-blue);
+  color: var(--bg-dark);
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(77, 163, 255, 0.3);
+  background: #6bb3ff;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.scroll-line {
+  width: 2px;
+  height: 40px;
+  background: var(--primary-blue);
+  animation: scroll-pulse 2s infinite;
+}
+
+@keyframes scroll-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+}
+
+/* ==================== PARALLAX SECTION ==================== */
+.parallax {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center 50%;
+  background-attachment: fixed;
+}
+
+.parallax .content {
+  text-align: center;
+  color: var(--text-light);
+}
+
+.parallax h2 {
+  font-size: 2.5rem;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ==================== PORTFOLIO SECTION ==================== */
+.portfolio {
+  padding: 80px 40px;
+  background: var(--bg-darker);
+}
+
+.portfolio h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--text-light);
+  margin-bottom: 60px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+.grid img:hover {
+  transform: scale(1.05);
+}
+
+/* ==================== LIGHTBOX ==================== */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  color: var(--text-light);
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transition);
+}
+
+.lightbox-close {
+  top: 20px;
+  right: 30px;
+}
+
+.lightbox-close:hover {
+  color: var(--primary-blue);
+  transform: scale(1.2);
+}
+
+.lightbox-prev,
+.lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px;
+}
+
+.lightbox-prev {
+  left: 20px;
+}
+
+.lightbox-next {
+  right: 20px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  color: var(--primary-blue);
+  transform: translateY(-50%) scale(1.3);
+}
+
+/* ==================== KONTAKT SECTION ==================== */
+.contact {
+  padding: 80px 40px;
+  background: var(--bg-dark);
+}
+
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: var(--text-light);
+}
+
+.contact-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-text {
+  margin-bottom: 40px;
+}
+
+.contact-text p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 15px 0;
+}
+
+.contact-note {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* ==================== CONTACT FORM ==================== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  padding: 12px 15px;
+  background: rgba(77, 163, 255, 0.05);
+  border: 1px solid rgba(77, 163, 255, 0.2);
+  border-radius: var(--radius);
+  color: var(--text-light);
+  font-family: var(--font-main);
+  transition: all var(--transition);
+  font-size: 1rem;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  background: rgba(77, 163, 255, 0.1);
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 10px rgba(77, 163, 255, 0.2);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  font-family: var(--font-main);
+}
+
+.form-message {
+  padding: 15px;
+  border-radius: var(--radius);
+  text-align: center;
+  animation: slideIn 0.3s ease;
+  background: rgba(77, 163, 255, 0.1);
+}
+
+/* ==================== FOOTER ==================== */
+footer {
+  background: rgba(10, 13, 18, 0.8);
+  padding: 30px 40px;
+  text-align: center;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(77, 163, 255, 0.15);
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fpvShake {
+  0%, 100% { transform: translate(0, 0) rotateZ(0deg); }
+  25% { transform: translate(2px, -1px) rotateZ(0.5deg); }
+  50% { transform: translate(-2px, 1px) rotateZ(-0.5deg); }
+  75% { transform: translate(1px, 2px) rotateZ(0.3deg); }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .hero {
+    margin-top: 50px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .parallax h2 {
+    font-size: 1.8rem;
+  }
+  
+  .header {
+    padding: 15px 20px;
+  }
+  
+  .logo {
+    height: 40px;
+  }
+  
+  .brand-title {
+    font-size: 0.85rem;
+  }
+
+  .portfolio h2,
+  .contact h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .btn-primary {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+  
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font-size: 16px;
+  }
+  
+  .lightbox-prev,
+  .lightbox-next {
+    padding: 10px;
+    font-size: 1.5rem;
+  }
+
+  .portfolio,
+  .contact {
+    padding: 40px 20px;
+  }
 }
