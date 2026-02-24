@@ -69,44 +69,13 @@
   </section>
 
   <!-- Kontakt -->
-    <section class="contact fade-in" id="contact">
-    <div class="contact-inner">
-        <div class="contact-text">
-        <h2>Projekt anfragen</h2>
-        <p>
-            Du planst ein Projekt, Event, Immobilien-Shooting oder Cinematic Flight?
-            Erzähle mir kurz davon – ich melde mich persönlich bei dir.
-        </p>
-        <p class="contact-note">
-            Aktuell verfügbar in der Schweiz und auf Anfrage international.
-        </p>
-        </div>
+    <section id="contact" class="contact fpv-reveal"></section>
 
-        <form class="contact-form" id="contactForm">
-        <div class="form-row">
-            <input type="text" placeholder="Name" name="name" required>
-            <input type="email" placeholder="E-Mail" name="email" required>
-        </div>
-
-        <input type="text" placeholder="Projekt / Location" name="location" required>
-
-        <select name="projectType" required>
-            <option value="">Art des Projekts wählen</option>
-            <option value="immobilien">Immobilien</option>
-            <option value="event">Event</option>
-            <option value="imagefilm">Imagefilm</option>
-            <option value="social-media">Social Media Content</option>
-            <option value="fpv-cinematic">FPV-Cinematic</option>
-            <option value="sonstiges">Sonstiges</option>
-        </select>
-
-        <textarea rows="4" placeholder="Kurzbeschreibung deines Projekts" name="message"></textarea>
-
-        <button type="submit" class="btn-primary">Anfrage senden</button>
-        <div id="formMessage" class="form-message" style="display: none;"></div>
-        </form>
-    </div>
-    </section>
+    <script>
+    fetch("components/contact.html")
+        .then(res => res.text())
+        .then(data => document.getElementById("contact").innerHTML = data);
+    </script>
 
   <!-- Footer -->
   <div id="footer"></div>

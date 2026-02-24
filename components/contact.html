@@ -1,7 +1,36 @@
-<section id="contact" class="contact fpv-reveal"></section>
+<section class="contact-section">
+  <div class="contact-inner">
 
-<script>
-  fetch("components/contact.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("contact").innerHTML = data);
-</script>
+    <div class="contact-text">
+      <h2>Kontakt</h2>
+      <p>Hast du ein Projekt, eine Idee oder möchtest einfach mehr erfahren?
+      Schreib mir – ich melde mich so schnell wie möglich.</p>
+
+      <p class="contact-mail">
+        <a href="mailto:the.drone.shot@outlook.com">the.drone.shot@outlook.com</a>
+      </p>
+
+      <p class="contact-note">Ich freue mich auf deine Nachricht.</p>
+    </div>
+
+    <form class="contact-form" action="mailto:the.drone.shot@outlook.com" method="POST" enctype="text/plain">
+      <div class="form-row">
+        <input type="text" name="Name" placeholder="Name" required>
+        <input type="email" name="Email" placeholder="E-Mail" required>
+      </div>
+
+      <select name="Betreff" required>
+        <option value="">Betreff auswählen</option>
+        <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+        <option value="Drohnenflug">Drohnenflug</option>
+        <option value="Videoproduktion">Videoproduktion</option>
+        <option value="Zusammenarbeit">Zusammenarbeit</option>
+      </select>
+
+      <textarea name="Nachricht" rows="6" placeholder="Nachricht" required></textarea>
+
+      <button type="submit" class="btn-primary">Nachricht senden</button>
+    </form>
+
+  </div>
+</section>
