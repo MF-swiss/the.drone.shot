@@ -50,15 +50,43 @@
   </section>
 
   <!-- Kontakt -->
-  <section class="contact fade-in">
-    <h2>Kontakt</h2>
-    <form>
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="E-Mail">
-      <textarea placeholder="Nachricht"></textarea>
-      <button type="submit">Senden</button>
-    </form>
-  </section>
+    <section class="contact fade-in" id="contact">
+    <div class="contact-inner">
+        <div class="contact-text">
+        <h2>Projekt anfragen</h2>
+        <p>
+            Du planst ein Projekt, Event, Immobilien-Shooting oder Cinematic Flight?
+            Erzähle mir kurz davon – ich melde mich persönlich bei dir.
+        </p>
+        <p class="contact-note">
+            Aktuell verfügbar in der Schweiz und auf Anfrage international.
+        </p>
+        </div>
+
+        <form class="contact-form">
+        <div class="form-row">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="E-Mail" required>
+        </div>
+
+        <input type="text" placeholder="Projekt / Location" required>
+
+        <select required>
+            <option value="">Art des Projekts wählen</option>
+            <option>Immobilien</option>
+            <option>Event</option>
+            <option>Imagefilm</option>
+            <option>Social Media Content</option>
+            <option>FPV-Cinematic</option>
+            <option>Sonstiges</option>
+        </select>
+
+        <textarea rows="4" placeholder="Kurzbeschreibung deines Projekts"></textarea>
+
+        <button type="submit" class="btn-primary">Anfrage senden</button>
+        </form>
+    </div>
+    </section>
 
   <!-- Footer -->
   <div id="footer"></div>
