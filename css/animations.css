@@ -8,3 +8,40 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+// FPV Scroll Reveal
+const fpvElements = document.querySelectorAll('.fpv-reveal');
+
+const fpvObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+fpvElements.forEach(el => fpvObserver.observe(el));
+
+/* FPV SCROLL REVEAL */
+.fpv-reveal {
+  opacity: 0;
+  transform: translateX(80px) rotate(1deg);
+  filter: blur(6px);
+  transition: opacity 0.9s ease-out, 
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.8s ease-out;
+}
+
+.fpv-reveal.left {
+  transform: translateX(-80px) rotate(-1deg);
+}
+
+.fpv-reveal.up {
+  transform: translateY(80px) rotate(1deg);
+}
+
+.fpv-reveal.visible {
+  opacity: 1;
+  transform: translateX(0) translateY(0) rotate(0);
+  filter: blur(0);
+}

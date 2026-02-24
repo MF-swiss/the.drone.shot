@@ -66,6 +66,37 @@ body {
   overflow-x: hidden;
 }
 
+/* CINEMATIC HERO TITLE */
+.hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 0.95;
+  margin: 0;
+}
+
+.hero-title span {
+  display: block;
+}
+
+.hero-title .highlight {
+  color: var(--primary-blue);
+  text-shadow: 0 0 25px rgba(77, 163, 255, 0.7);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 12px rgba(77,163,255,0.4); }
+  50% { text-shadow: 0 0 28px rgba(77,163,255,0.9); }
+  100% { text-shadow: 0 0 12px rgba(77,163,255,0.4); }
+}
+
+.hero-sub {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  opacity: 0.85;
+  letter-spacing: 2px;
+}
+
 /* HERO */
 .hero {
   position: relative;
@@ -155,6 +186,66 @@ body {
   text-shadow: 0 0 15px rgba(77, 163, 255, 0.5);
   z-index: 10;
   position: relative;
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 7, 11, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(77, 163, 255, 0.4);
+  animation: lightboxFade 0.3s ease;
+}
+
+@keyframes lightboxFade {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-blue);
+  font-size: 2.5rem;
+  cursor: pointer;
+  user-select: none;
+  text-shadow: 0 0 12px rgba(77, 163, 255, 0.6);
+}
+
+.lightbox-close {
+  top: 40px;
+  right: 40px;
+  transform: none;
+}
+
+.lightbox-prev {
+  left: 40px;
+}
+
+.lightbox-next {
+  right: 40px;
 }
 
 /* PORTFOLIO */
