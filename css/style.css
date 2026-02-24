@@ -359,6 +359,20 @@ a:hover {
   font-style: italic;
 }
 
+.contact-mail a {
+  color: var(--primary-blue);
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 12px rgba(77, 163, 255, 0.4);
+  transition: 0.3s ease;
+}
+
+.contact-mail a:hover {
+  text-shadow: 0 0 18px rgba(77, 163, 255, 0.7);
+}
+
+
 /* ==================== CONTACT FORM ==================== */
 .contact-form {
   display: flex;

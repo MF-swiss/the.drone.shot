@@ -1,0 +1,7 @@
+<section id="contact" class="contact fpv-reveal"></section>
+
+<script>
+  fetch("components/contact.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("contact").innerHTML = data);
+</script>
