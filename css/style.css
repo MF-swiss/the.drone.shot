@@ -71,12 +71,16 @@ a:hover {
   color: var(--text-muted);
 }
 
+.nav {
+  padding-right: 40px;
+}
+
 .nav-links {
   display: flex;
-  align-items: center;
   gap: 20px;
-  padding-right: 30px;
+  align-items: center;
 }
+
 
 .social-link {
   display: flex;
