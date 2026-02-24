@@ -14,6 +14,12 @@
 
   <!-- Header -->
   <div id="header"></div>
+    <script>
+        fetch("components/header.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("header").innerHTML = data);
+    </script>
+
 
   <!-- HERO SECTION -->
     <section class="hero">
