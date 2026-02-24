@@ -29,7 +29,7 @@ fetch("components/footer.html")
   })
   .catch(err => console.error('Footer konnte nicht geladen werden:', err));
 
-// Dynamisches Laden der Portfolio-Bilder
+// Dynamisches Laden der Portfolio-Bilder und Videos
 fetch('assets/images/portfolio/portfolio.json')
   .then(res => {
     if (!res.ok) throw new Error(`Portfolio JSON nicht gefunden: ${res.status}`);
@@ -39,23 +39,71 @@ fetch('assets/images/portfolio/portfolio.json')
     const gallery = document.querySelector('.grid');
     if (!gallery) return;
 
-    if (!data.images || !Array.isArray(data.images)) {
+    // Support für neue Format (items) und altes Format (images)
+    const items = data.items || data.images?.map((img, i) => ({
+      type: 'image',
+      src: `assets/images/portfolio/${img}`,
+      alt: `Portfolio-Bild ${i + 1}`
+    })) || [];
+
+    if (!Array.isArray(items) || items.length === 0) {
       console.error('portfolio.json hat unerwartetes Format');
       return;
     }
 
-    data.images.forEach((img, index) => {
-      const el = document.createElement('img');
-      el.src = `assets/images/portfolio/${img}`;
-      el.alt = `Portfolio-Bild ${index + 1}`;
-      el.classList.add('fade-in');
-      gallery.appendChild(el);
+    items.forEach((item, index) => {
+      let el;
 
-      // Für Lightbox speichern
-      galleryImages.push(el);
+      if (item.type === 'video') {
+        // Video-Container erstellen
+        const videoContainer = document.createElement('div');
+        videoContainer.classList.add('portfolio-video-container', 'fade-in');
+        
+        // Video-Element
+        const video = document.createElement('video');
+        video.src = item.src;
+        video.poster = item.poster;
+        video.preload = 'metadata';
+        video.classList.add('portfolio-video');
+        
+        // Play-Button Overlay
+        const playButton = document.createElement('div');
+        playButton.classList.add('play-button');
+        playButton.innerHTML = '▶';
+        
+        videoContainer.appendChild(video);
+        videoContainer.appendChild(playButton);
+        
+        el = videoContainer;
+        gallery.appendChild(el);
 
-      // Klick-Event
-      el.addEventListener('click', () => openLightbox(index));
+        // Klick zum Öffnen in Lightbox
+        videoContainer.addEventListener('click', () => openLightboxVideo(item.src, index));
+
+        // Für Lightbox speichern
+        galleryImages.push({
+          type: 'video',
+          src: item.src,
+          alt: item.alt
+        });
+      } else {
+        // Bild-Element
+        el = document.createElement('img');
+        el.src = item.src;
+        el.alt = item.alt;
+        el.classList.add('fade-in');
+        gallery.appendChild(el);
+
+        // Für Lightbox speichern
+        galleryImages.push({
+          type: 'image',
+          src: item.src,
+          alt: item.alt
+        });
+
+        // Klick-Event
+        el.addEventListener('click', () => openLightbox(index));
+      }
     });
   })
   .catch(err => {
@@ -80,7 +128,10 @@ function createLightbox() {
     <span class="lightbox-close">✕</span>
     <span class="lightbox-prev">‹</span>
     <span class="lightbox-next">›</span>
-    <img src="" alt="Lightbox Image">
+    <div class="lightbox-media">
+      <img src="" alt="Lightbox Image" class="lightbox-image" style="display: none;">
+      <video class="lightbox-video" style="display: none;" controls></video>
+    </div>
   `;
   document.body.appendChild(lightbox);
 
@@ -92,13 +143,40 @@ function createLightbox() {
 // Bild anzeigen
 function openLightbox(index) {
   currentIndex = index;
-  const img = lightbox.querySelector('img');
-  img.src = galleryImages[index].src;
+  const item = galleryImages[index];
+  
+  if (item.type === 'video') {
+    openLightboxVideo(item.src, index);
+  } else {
+    const img = lightbox.querySelector('.lightbox-image');
+    const video = lightbox.querySelector('.lightbox-video');
+    
+    img.style.display = 'block';
+    video.style.display = 'none';
+    img.src = item.src || item;
+    lightbox.classList.add('active');
+  }
+}
+
+// Video in Lightbox öffnen
+function openLightboxVideo(videoSrc, index) {
+  currentIndex = index;
+  const img = lightbox.querySelector('.lightbox-image');
+  const video = lightbox.querySelector('.lightbox-video');
+  
+  img.style.display = 'none';
+  video.style.display = 'block';
+  video.src = videoSrc;
+  video.play();
   lightbox.classList.add('active');
 }
 
 // Lightbox schließen
 function closeLightbox() {
+  const video = lightbox.querySelector('.lightbox-video');
+  if (video) {
+    video.pause();
+  }
   lightbox.classList.remove('active');
 }
 

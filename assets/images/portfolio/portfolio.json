@@ -1,3 +1,22 @@
 {
-  "images": ["img1.svg", "img2.svg", "img3.svg"]
+  "items": [
+    {
+      "type": "video",
+      "src": "assets/videos/portfolio-video-1.mp4",
+      "poster": "assets/images/portfolio/img1.svg",
+      "alt": "FPV Cinematic Flight"
+    },
+    {
+      "type": "video",
+      "src": "assets/videos/portfolio-video-2.mp4",
+      "poster": "assets/images/portfolio/img2.svg",
+      "alt": "Immobilien Luftaufnahme"
+    },
+    {
+      "type": "video",
+      "src": "assets/videos/portfolio-video-3.mp4",
+      "poster": "assets/images/portfolio/img3.svg",
+      "alt": "Event Photography"
+    }
+  ]
 }
