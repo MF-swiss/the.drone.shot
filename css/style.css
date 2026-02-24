@@ -73,8 +73,9 @@ a:hover {
 
 .nav-links {
   display: flex;
-  gap: 25px;
   align-items: center;
+  gap: 20px;
+  padding-right: 30px;
 }
 
 .social-link {

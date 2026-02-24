@@ -83,5 +83,20 @@
   <script src="js/parallax.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- Komponenten Loader -->
+<script>
+  fetch("components/header.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("header").innerHTML = data);
+
+  fetch("components/contact.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("contact").innerHTML = data);
+</script>
+
+<!-- Animations -->
+<script src="js/animations.js"></script>
+
 </body>
 </html>

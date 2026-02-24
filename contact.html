@@ -19,3 +19,30 @@
     </div>
 
     <!-- Kontaktformular -->
+    <form class="contact-form" action="https://formspree.io/f/DEINE-ID" method="POST">
+
+      <div class="form-row">
+        <input type="text" name="Name" placeholder="Name" required>
+        <input type="email" name="Email" placeholder="E-Mail" required>
+      </div>
+
+      <select name="Betreff" required>
+        <option value="">Betreff auswählen</option>
+        <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+        <option value="Drohnenflug">Drohnenflug</option>
+        <option value="Videoproduktion">Videoproduktion</option>
+        <option value="Zusammenarbeit">Zusammenarbeit</option>
+      </select>
+
+      <textarea name="Nachricht" rows="6" placeholder="Nachricht" required></textarea>
+
+      <button type="submit" class="btn-primary">Nachricht senden</button>
+
+      <p class="form-success" style="display:none; color: var(--primary-blue); margin-top: 10px;">
+        Danke! Deine Nachricht wurde erfolgreich gesendet.
+      </p>
+
+    </form>
+
+  </div>
+</section>
