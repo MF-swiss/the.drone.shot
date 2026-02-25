@@ -1,26 +1,34 @@
 [
   {
     "type": "video",
-    "title": "FPV Cinematic Flight",
+    "title": "Säntis – Testflug & Panorama",
+    "category": "landscape",
+    "src": "assets/videos/saentis.mp4",
+    "poster": "assets/images/portfolio/saentis.jpg",
+    "description": "Atmosphärischer Testflug über die Schwägapt mit weiten Panoramen und dynamischen Höhenwechseln mit Sicht auf den Säntis."
+  },
+  {
+    "type": "video",
+    "title": "Dynamische Autoaufnahmen",
     "category": "fpv",
-    "src": "assets/videos/portfolio-video-1.mp4",
-    "poster": "assets/images/portfolio/img1.svg",
-    "description": "Dynamic FPV flight with smooth transitions."
+    "src": "assets/videos/auto.mp4",
+    "poster": "assets/images/portfolio/auto.jpg",
+    "description": "Cinematische Aufnahmen eines stehenden Fahrzeugs mit fliessenden Kamerafahrten und detailreichen Perspektiven."
   },
   {
     "type": "video",
-    "title": "Immobilien Luftaufnahme",
-    "category": "realestate",
-    "src": "assets/videos/portfolio-video-2.mp4",
-    "poster": "assets/images/portfolio/img2.svg",
-    "description": "Aerial real estate showcase."
+    "title": "Pilatus – Panorama & Höhenflug",
+    "category": "landscape",
+    "src": "assets/videos/pilatus.mp4",
+    "poster": "assets/images/portfolio/pilatus.jpg",
+    "description": "Cinematic-Flug über den Pilatus mit weiten Bergpanoramen und ruhigen Kamerabewegungen bei starken Winden."
   },
   {
     "type": "video",
-    "title": "Event Photography",
-    "category": "event",
-    "src": "assets/videos/portfolio-video-3.mp4",
-    "poster": "assets/images/portfolio/img3.svg",
-    "description": "Event coverage with cinematic drone shots."
+    "title": "kybun Arena – Fussballstadion",
+    "category": "commercial",
+    "src": "assets/videos/kybun.mp4",
+    "poster": "assets/images/portfolio/kybun.jpg",
+    "description": "Flythrough der kybun Arena mit dynamischen Perspektiven und architektonischen Highlight-Shots."
   }
 ]

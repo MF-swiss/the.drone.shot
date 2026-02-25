@@ -15,9 +15,11 @@ fetch("assets/images/portfolio/portfolio.json")
               alt="${item.title}" 
               loading="lazy"
             >
-            <h3>${item.title}</h3>
-            <p>${item.description}</p>
-            <a href="${item.link}" target="_blank" class="portfolio-link">Zum Reel</a>
+            <div class="portfolio-info">
+              <h3>${item.title}</h3>
+              <p>${item.description}</p>
+              <a href="${item.link}" target="_blank" class="portfolio-link">Zum Reel</a>
+            </div>
           </div>
         `;
       }
@@ -39,8 +41,11 @@ fetch("assets/images/portfolio/portfolio.json")
               >
               <div class="play-button">▶</div>
             </div>
-            <h3>${item.title}</h3>
-            <p>${item.description}</p>
+
+            <div class="portfolio-info">
+              <h3>${item.title}</h3>
+              <p>${item.description}</p>
+            </div>
           </div>
         `;
       }
@@ -87,5 +92,23 @@ fetch("assets/images/portfolio/portfolio.json")
     });
 
     videoContainers.forEach(container => observer.observe(container));
+
+     /* ============================
+       FADE-IN OBSERVER FOR ITEMS
+       ============================ */
+    const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          fadeObserver.unobserve(entry.target); // nur einmal animieren
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    portfolioItems.forEach(item => fadeObserver.observe(item));
   })
   .catch(err => console.error("Portfolio konnte nicht geladen werden:", err));
