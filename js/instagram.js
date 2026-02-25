@@ -175,4 +175,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Exportiere Funktionen falls benötigt
-export { loadInstagramFeed, displayInstagramFallback };
+// export { loadInstagramFeed, displayInstagramFallback };
