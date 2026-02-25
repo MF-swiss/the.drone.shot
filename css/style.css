@@ -258,31 +258,51 @@ a:hover {
 
 /* ==================== PORTFOLIO PREMIUM LOOK ==================== */
 
+/* ==================== MASONRY GRID ==================== */
 .portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
+  column-count: 3;
+  column-gap: 30px;
   padding: 40px 0;
 }
 
-/* Portfolio Item */
+@media (max-width: 900px) {
+  .portfolio-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-grid {
+    column-count: 1;
+  }
+}
+
+/* Masonry Items */
 .portfolio-item {
-  position: relative;
-  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 30px;
   border-radius: 14px;
+  overflow: hidden;
   background: #0f1115;
   box-shadow: 0 10px 30px rgba(0,0,0,0.25);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   cursor: pointer;
+
+  /* Fade-In Start */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
+/* Hover Effects */
 .portfolio-item:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 }
 
 /* Poster Image */
-.portfolio-item img {
+.portfolio-item img,
+.portfolio-video-container {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -325,17 +345,23 @@ a:hover {
   opacity: 0.85;
 }
 
-/* ==================== PORTFOLIO FADE-IN ANIMATION ==================== */
-.portfolio-item {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
+/* ==================== FADE-IN ANIMATION ==================== */
 .portfolio-item.visible {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
+
+/* ==================== STAGGER ANIMATION ==================== */
+.portfolio-item:nth-child(1) { transition-delay: 0.05s; }
+.portfolio-item:nth-child(2) { transition-delay: 0.10s; }
+.portfolio-item:nth-child(3) { transition-delay: 0.15s; }
+.portfolio-item:nth-child(4) { transition-delay: 0.20s; }
+.portfolio-item:nth-child(5) { transition-delay: 0.25s; }
+.portfolio-item:nth-child(6) { transition-delay: 0.30s; }
+.portfolio-item:nth-child(7) { transition-delay: 0.35s; }
+.portfolio-item:nth-child(8) { transition-delay: 0.40s; }
+
 
 
 /* ==================== INSTAGRAM SECTION ==================== */
