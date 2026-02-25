@@ -1,67 +1,67 @@
 <div align="center">
 
-# 🚁 THE DRONE SHOT  
-### Cinematic FPV • Aerial Photography • Creative Vision  
+# 🚁 THE DRONE SHOT
+### Cinematic FPV • Aerial Photography • Creative Vision
 **by Marco Fritsche**
 
 </div>
 
 ---
 
-
 # The Drone Shot – Portfolio Website
 
-Dies ist die offizielle Portfolio‑Website von **The Drone Shot**, entwickelt von Marco Fritsche.  
-Die Seite präsentiert hochwertige Drohnenaufnahmen, Cinematic‑Videos, Projekte und Kontaktmöglichkeiten in einem modernen, dunklen UI‑Design mit FPV‑Effekten und subtilen Animationen.
+Dies ist die offizielle Portfolio‑Website von **The Drone Shot**.  
+Sie zeigt Cinematic‑FPV‑Videos, Drohnenfotografie, Projekte und Kontaktmöglichkeiten in einem modernen, dunklen UI mit subtilen Animationen.
 
 ---
 
-## 🚁 Features
+## ✨ Highlights
 
-### 🎥 Cinematic Hero Section
-- Hintergrundvideo im Fullscreen
-- Chromatic Lens Flare Effekt
-- FPV‑Micro‑Shake Animation
-- Dynamischer Glow‑Titel
+### 🎥 Hero Section
+- Fullscreen‑Hintergrundvideo
+- Cinematic Overlay + 3D‑Titel
+- Scroll‑Indicator
 
-### 🖼 Portfolio Galerie
-- Responsive Grid‑Layout
-- Lightbox mit Navigation
-- Hover‑Zoom und Glow‑Effekte
+### 🖼 Portfolio
+- Dynamisch aus `assets/images/portfolio/portfolio.json`
+- Bilder **und** Videos (Poster + Lazy‑Load per IntersectionObserver)
+- Hover‑Effekte und animierte Cards
 
-### 📩 Kontaktbereich
-- Klar strukturierter Kontakttext
-- Direktlink zur E‑Mail: `the.drone.shot@outlook.com`
-- Optionales Kontaktformular via Formspree
-- FPV‑Reveal Animation beim Scrollen
+### 🔍 Lightbox
+- Bilder & Videos im Overlay
+- Keyboard‑Navigation (←/→/Esc)
 
-### 🧭 Header & Navigation
-- Fixierter Header mit Blur‑Glass‑Effekt
-- Logo + Branding‑Text
-- Social Icons (Instagram etc.)
-- Hover‑Glow Animationen
+### 📷 Instagram Feed
+- Manuelle Embeds **oder** API‑Integration
+- Fallback‑Block mit Anleitung
+
+### 📩 Kontakt
+- Mail‑Link + einfaches Formular (mailto)
+- Klarer Kontakttext
+
+### 🧩 Modulare Komponenten
+- Header/Footer via `fetch()` aus `/components`
 
 ---
 
 ## 🛠 Technologien
 
 - **HTML5**
-- **CSS3** (Custom Animations, Gradients, FPV‑Effects)
-- **JavaScript** (IntersectionObserver, Lightbox, Scroll‑Reveal)
-- **Formspree** (optional für Kontaktformular)
+- **CSS3** (Custom Animations, Gradients, Responsive)
+- **JavaScript** (Fetch, IntersectionObserver, Lightbox)
 - **Modulare Komponentenstruktur** (`/components/`)
 
 ---
 
 ## 📁 Projektstruktur
+
 assets/
   images/
+    icons/
     portfolio/
-      img1.svg
-      img2.svg
-      img3.svg
       portfolio.json
   videos/
+    hero.mp4
     portfolio-video-1.mp4
     portfolio-video-2.mp4
     portfolio-video-3.mp4
@@ -87,29 +87,46 @@ index.html
 about.html
 contact.html
 
-
 ---
 
 ## ⚙️ Installation & Nutzung
 
-1. Repository klonen oder herunterladen  
-2. Projekt lokal öffnen  
-3. `index.html` im Browser starten  
-4. Optional: Formspree‑ID im Kontaktformular eintragen
+1. Repository klonen oder herunterladen
+2. Projekt lokal öffnen
+3. `index.html` im Browser starten
+
+---
+
+## 🔧 Konfiguration
+
+### Instagram Feed
+In `js/instagram.js` kannst du wählen:
+- **API**: `accessToken`, `userId` setzen
+- **Manuell**: URLs in `manualPosts` eintragen
+
+### Portfolio
+- Inhalte in `assets/images/portfolio/portfolio.json` pflegen
+- Unterstützt `image` und `video` Einträge (inkl. `poster` bei Videos)
+
+### Kontakt
+- Standard ist `mailto:the.drone.shot@outlook.com`
+- Bei Bedarf auf echten Backend‑Service umstellen
 
 ---
 
 ## ✉️ Kontakt
 
-Für Anfragen, Projekte oder Kooperationen:
-
 **📧 the.drone.shot@outlook.com**
 
 ---
 
-## 🔗 Live Demo  
-https://deinname.github.io/dein-projekt
+## 📄 Lizenz
 
+Dieses Projekt steht unter **CC BY‑NC 4.0**.  
+Medieninhalte (Bilder, Videos, Logos) sind urheberrechtlich geschützt und dürfen nicht ohne Erlaubnis verwendet werden.  
+Siehe `LICENSE` für Details.
+
+---
 
 ## 📸 Credits
 
