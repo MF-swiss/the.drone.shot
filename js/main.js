@@ -39,12 +39,12 @@ fetch('assets/images/portfolio/portfolio.json')
     const gallery = document.querySelector('.grid');
     if (!gallery) return;
 
-    // Support für neue Format (items) und altes Format (images)
-    const items = data.items || data.images?.map((img, i) => ({
+    // Support für verschiedene Formate: direktes Array, .items Property, oder .images
+    let items = Array.isArray(data) ? data : (data.items || data.images?.map((img, i) => ({
       type: 'image',
       src: `assets/images/portfolio/${img}`,
       alt: `Portfolio-Bild ${i + 1}`
-    })) || [];
+    })) || []);
 
     if (!Array.isArray(items) || items.length === 0) {
       console.error('portfolio.json hat unerwartetes Format');
@@ -53,6 +53,7 @@ fetch('assets/images/portfolio/portfolio.json')
 
     items.forEach((item, index) => {
       let el;
+      const galleryIndex = galleryImages.length; // Speichere die aktuelle Länge als Index
 
       if (item.type === 'video') {
         // Video-Container erstellen
@@ -78,31 +79,31 @@ fetch('assets/images/portfolio/portfolio.json')
         gallery.appendChild(el);
 
         // Klick zum Öffnen in Lightbox
-        videoContainer.addEventListener('click', () => openLightboxVideo(item.src, index));
+        videoContainer.addEventListener('click', () => openLightboxVideo(item.src, galleryIndex));
 
         // Für Lightbox speichern
         galleryImages.push({
           type: 'video',
           src: item.src,
-          alt: item.alt
+          alt: item.alt || item.title
         });
       } else {
         // Bild-Element
         el = document.createElement('img');
-        el.src = item.src;
-        el.alt = item.alt;
+        el.src = item.src || item.thumbnail; // Unterstütze src oder thumbnail
+        el.alt = item.alt || item.title;
         el.classList.add('fade-in');
         gallery.appendChild(el);
 
         // Für Lightbox speichern
         galleryImages.push({
           type: 'image',
-          src: item.src,
-          alt: item.alt
+          src: item.src || item.thumbnail,
+          alt: item.alt || item.title
         });
 
         // Klick-Event
-        el.addEventListener('click', () => openLightbox(index));
+        el.addEventListener('click', () => openLightbox(galleryIndex));
       }
     });
   })
