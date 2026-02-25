@@ -137,5 +137,3 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-assets/videos/portfolio-video-1.mp4
-assets/videos/portfolio-video-2.mp4
