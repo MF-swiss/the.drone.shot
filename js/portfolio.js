@@ -57,7 +57,6 @@ fetch("assets/images/portfolio/portfolio.json")
         const videoSrc = container.getAttribute("data-video");
         const poster = container.getAttribute("data-poster");
 
-        // Wenn 50% sichtbar → Video laden
         if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
           if (!container.classList.contains("loaded")) {
             container.classList.add("loaded");
@@ -69,7 +68,6 @@ fetch("assets/images/portfolio/portfolio.json")
             `;
           }
         } else {
-          // Wenn nicht sichtbar → Video entfernen
           if (container.classList.contains("loaded")) {
             container.classList.remove("loaded");
 
@@ -91,4 +89,3 @@ fetch("assets/images/portfolio/portfolio.json")
     videoContainers.forEach(container => observer.observe(container));
   })
   .catch(err => console.error("Portfolio konnte nicht geladen werden:", err));
-  
