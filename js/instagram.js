@@ -1,178 +1,97 @@
-// Instagram Feed Integration
-// Zwei Optionen: 
-// 1. Mit API Token: Automatisch Profil-Feed laden
-// 2. Ohne Token: Manuelle Instagram-Post-URLs einbinden
+// ==================== INSTAGRAM FEED ====================
+// Modus: "manual" (Standard) oder "api" (Instagram Basic Display)
+const INSTAGRAM_MODE = "manual";
 
-const INSTAGRAM_CONFIG = {
-  // Option 1: Für Live-Integration füge hier deinen Access Token ein
-  accessToken: '',
-  userId: '',
-  feedLimit: 6,
-  
-  // Option 2: Manuelle Post-URLs (ohne API Token nötig)
-  manualPosts: [
-    'https://www.instagram.com/p/DUQkAG6AlKb/',
-    'https://www.instagram.com/p/DR3t16nAgWK/',
-    'https://www.instagram.com/p/DR7pDXzAlom/'
-  ],
-  
-  // Fallback: Direkte Profile URL
-  profileUrl: 'https://www.instagram.com/the.drone.shot/'
-};
+// Optional: Instagram Basic Display API
+// Werte setzen, um den API-Mode zu nutzen
+const INSTAGRAM_ACCESS_TOKEN = "";
+const INSTAGRAM_USER_ID = "";
 
-// Instagram Feed laden
+// Manuelle Posts (lokale Bilder + Profil-Link)
+const manualPosts = [
+  {
+    media_type: "IMAGE",
+    media_url: "assets/images/portfolio/saentis.jpg",
+    permalink: "https://www.instagram.com/the.drone.shot/"
+  },
+  {
+    media_type: "IMAGE",
+    media_url: "assets/images/portfolio/auto.jpg",
+    permalink: "https://www.instagram.com/the.drone.shot/"
+  },
+  {
+    media_type: "IMAGE",
+    media_url: "assets/images/portfolio/pilatus.jpg",
+    permalink: "https://www.instagram.com/the.drone.shot/"
+  },
+  {
+    media_type: "IMAGE",
+    media_url: "assets/images/portfolio/kybun.jpg",
+    permalink: "https://www.instagram.com/the.drone.shot/"
+  }
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadInstagramFeed();
+});
+
 function loadInstagramFeed() {
-  // Wenn API Token vorhanden, nutze API
-  if (INSTAGRAM_CONFIG.accessToken) {
-    loadInstagramAPI();
-    return;
+  if (INSTAGRAM_MODE === "api" && INSTAGRAM_ACCESS_TOKEN && INSTAGRAM_USER_ID) {
+    const apiUrl = `https://graph.instagram.com/${INSTAGRAM_USER_ID}/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink&access_token=${INSTAGRAM_ACCESS_TOKEN}`;
+    fetch(apiUrl)
+      .then(res => {
+        if (!res.ok) throw new Error("Instagram API konnte nicht geladen werden");
+        return res.json();
+      })
+      .then(data => {
+        displayInstagramPosts(data.data || []);
+      })
+      .catch(err => {
+        console.error("Instagram Fehler:", err);
+        displayInstagramFallback();
+      });
+  } else if (manualPosts.length > 0) {
+    displayInstagramPosts(manualPosts);
+  } else {
+    displayInstagramFallback();
   }
-  
-  // Wenn manuelle Posts vorhanden, zeige diese
-  if (INSTAGRAM_CONFIG.manualPosts && INSTAGRAM_CONFIG.manualPosts.length > 0) {
-    displayInstagramEmbeds(INSTAGRAM_CONFIG.manualPosts);
-    return;
-  }
-  
-  // Ansonsten: Fallback
-  console.info('Keine Instagram-Daten konfiguriert. Zeige Fallback.');
-  displayInstagramFallback();
 }
 
-// Instagram API laden (mit Token)
-function loadInstagramAPI() {
-  const url = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url&access_token=${INSTAGRAM_CONFIG.accessToken}&limit=${INSTAGRAM_CONFIG.feedLimit}`;
-
-  fetch(url)
-    .then(res => {
-      if (!res.ok) throw new Error('Instagram API Error');
-      return res.json();
-    })
-    .then(data => {
-      console.log('Instagram Feed geladen:', data);
-      displayInstagramFeed(data.data);
-    })
-    .catch(err => {
-      console.error('Instagram API Fehler:', err);
-      displayInstagramFallback();
-    });
-}
-
-// Instagram Embeds anzeigen (ohne API)
-function displayInstagramEmbeds(postUrls) {
-  const container = document.getElementById('instagram-feed');
+function displayInstagramPosts(posts) {
+  const container = document.querySelector(".instagram-feed");
   if (!container) return;
 
-  container.innerHTML = '';
-  
-  postUrls.forEach(url => {
-    const postInfo = extractPostInfo(url);
-    if (!postInfo) {
-      console.warn('Ungültige Instagram-URL:', url);
-      return;
-    }
-
-    const iframeContainer = document.createElement('div');
-    iframeContainer.classList.add('instagram-embed-container', 'fade-in');
-    
-    const iframe = document.createElement('iframe');
-    iframe.src = `https://www.instagram.com/${postInfo.type}/${postInfo.id}/embed/`;
-    iframe.width = '100%';
-    iframe.height = '600';
-    iframe.frameborder = '0';
-    iframe.scrolling = 'no';
-    iframe.allowtransparency = 'true';
-    iframe.allow = 'encrypted-media';
-    iframe.style.cssText = 'border-radius: var(--radius);';
-    iframe.sandbox = 'allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox';
-    
-    iframeContainer.appendChild(iframe);
-    container.appendChild(iframeContainer);
-  });
-
-  // Instagram Embed Script laden
-  loadInstagramScript();
-}
-
-// Post-Typ und ID aus URL extrahieren (p oder reel)
-function extractPostInfo(url) {
-  const match = url.match(/\/(p|reel)\/([a-zA-Z0-9_-]+)\/?/);
-  if (!match) return null;
-  return { type: match[1], id: match[2] };
-}
-
-// Instagram Embed Script laden
-function loadInstagramScript() {
-  if (window.instgrm) {
-    window.instgrm.Embed.process();
-    return;
-  }
-
-  const script = document.createElement('script');
-  script.src = 'https://www.instagram.com/embed.js';
-  script.async = true;
-  document.body.appendChild(script);
-}
-
-// Instagram Feed anzeigen (API Version)
-function displayInstagramFeed(posts) {
-  const container = document.getElementById('instagram-feed');
-  if (!container) return;
-
-  container.innerHTML = '';
+  container.innerHTML = "";
 
   posts.forEach(post => {
-    const postEl = document.createElement('a');
-    postEl.href = post.permalink;
-    postEl.target = '_blank';
-    postEl.rel = 'noopener noreferrer';
-    postEl.classList.add('instagram-post', 'fade-in');
-    
-    const img = document.createElement('img');
-    img.src = post.media_type === 'VIDEO' ? post.thumbnail_url : post.media_url;
-    img.alt = post.caption || 'Instagram Bild';
-    img.classList.add('instagram-photo');
-    
-    postEl.appendChild(img);
-    
-    // Video-Badge
-    if (post.media_type === 'VIDEO') {
-      const videoBadge = document.createElement('div');
-      videoBadge.classList.add('video-badge');
-      videoBadge.innerHTML = '▶ VIDEO';
-      postEl.appendChild(videoBadge);
-    }
-    
-    container.appendChild(postEl);
+    const isVideo = post.media_type === "VIDEO";
+
+    const html = `
+      <a href="${post.permalink}" target="_blank" class="instagram-post fade-in">
+        <img 
+          src="${isVideo ? post.thumbnail_url : post.media_url}" 
+          class="instagram-photo" 
+          loading="lazy"
+        >
+        ${isVideo ? '<div class="video-badge">▶ VIDEO</div>' : ""}
+      </a>
+    `;
+
+    container.insertAdjacentHTML("beforeend", html);
   });
 }
 
-// Fallback: Zeige Instagram-Button und Anweisungen
 function displayInstagramFallback() {
-  const container = document.getElementById('instagram-feed');
+  const container = document.querySelector(".instagram-feed");
   if (!container) return;
 
   container.innerHTML = `
     <div class="instagram-fallback">
-      <h3>Folge uns auf Instagram</h3>
-      <p>Entdecke unsere neuesten Drone-Aufnahmen und FPV-Videos</p>
-      <a href="https://www.instagram.com/the.drone.shot/" target="_blank" rel="noopener noreferrer" class="btn-primary">
-        Besuche Instagram @the.drone.shot
+      <h3>Instagram Feed nicht verfügbar</h3>
+      <p>Besuche unser Profil für die neuesten FPV‑Aufnahmen.</p>
+      <a href="https://www.instagram.com/the.drone.shot/" target="_blank" class="btn-primary">
+        @the.drone.shot auf Instagram
       </a>
-      <p style="margin-top: 30px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
-        <strong>💡 Um Videos hier einzubinden:</strong><br>
-        1. Öffne deine Instagram Posts und kopiere die URL<br>
-        2. Füge sie in js/instagram.js im Array <code>manualPosts:</code> ein<br>
-        3. Oder konfiguriere einen API-Token für automatisches Laden
-      </p>
     </div>
   `;
 }
-
-// Lade Instagram Feed beim Seitenstart
-document.addEventListener('DOMContentLoaded', () => {
-  loadInstagramFeed();
-});
-
-// Exportiere Funktionen falls benötigt
-// export { loadInstagramFeed, displayInstagramFallback };
