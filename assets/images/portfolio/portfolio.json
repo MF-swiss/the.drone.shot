@@ -78,7 +78,7 @@ fetch("assets/images/portfolio/portfolio.json")
             `;
           }
         }
-      });
+      });git
     }, {
       threshold: 0.5
     });
