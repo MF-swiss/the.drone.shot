@@ -62,6 +62,10 @@ assets/
       portfolio.json
   videos/
     hero.mp4
+    auto.mp4
+    kybun.mp4
+    pilatus.mp4
+    saentis.mp4
     portfolio-video-1.mp4
     portfolio-video-2.mp4
     portfolio-video-3.mp4
@@ -107,6 +111,7 @@ In `js/instagram.js` kannst du wählen:
 ### Portfolio
 - Inhalte in `assets/images/portfolio/portfolio.json` pflegen
 - Unterstützt `image` und `video` Einträge (inkl. `poster` bei Videos)
+ - Aktuelle Portfolio‑Videos: `saentis.mp4`, `auto.mp4`, `pilatus.mp4`, `kybun.mp4`
 
 ### Kontakt
 - Standard ist `mailto:the.drone.shot@outlook.com`
