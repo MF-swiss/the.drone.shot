@@ -1,18 +1,26 @@
 [
   {
-    "type": "image",
-    "title": "FPV Mountain Dive",
+    "type": "video",
+    "title": "FPV Cinematic Flight",
     "category": "fpv",
-    "thumbnail": "assets/images/portfolio/img1.svg",
-    "description": "High‑speed FPV dive shot in the Swiss Alps.",
-    "link": "https://www.instagram.com/reel/DR3t16nAgWK/"
+    "src": "assets/videos/portfolio-video-1.mp4",
+    "poster": "assets/images/portfolio/img1.svg",
+    "description": "Dynamic FPV flight with smooth transitions."
   },
   {
-    "type": "image",
-    "title": "Cinematic Lake Shot",
-    "category": "cinematic",
-    "thumbnail": "assets/images/portfolio/img2.svg",
-    "description": "Smooth cinematic orbit with ND‑Filter.",
-    "link": "https://www.instagram.com/reel/DS700r9AnPj/"
+    "type": "video",
+    "title": "Immobilien Luftaufnahme",
+    "category": "realestate",
+    "src": "assets/videos/portfolio-video-2.mp4",
+    "poster": "assets/images/portfolio/img2.svg",
+    "description": "Aerial real estate showcase."
+  },
+  {
+    "type": "video",
+    "title": "Event Photography",
+    "category": "event",
+    "src": "assets/videos/portfolio-video-3.mp4",
+    "poster": "assets/images/portfolio/img3.svg",
+    "description": "Event coverage with cinematic drone shots."
   }
 ]
