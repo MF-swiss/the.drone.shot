@@ -291,6 +291,28 @@ a:hover {
   color: var(--accent-light);
 }
 
+/* Grid Container */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+.grid img:hover {
+  transform: scale(1.05);
+}
+
 /* Portfolio Videos */
 .portfolio-video-container {
   position: relative;
