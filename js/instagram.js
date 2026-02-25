@@ -11,10 +11,9 @@ const INSTAGRAM_CONFIG = {
   
   // Option 2: Manuelle Post-URLs (ohne API Token nötig)
   manualPosts: [
-    // Beispiel: 'https://www.instagram.com/p/POSTID/'
-   https://www.instagram.com/p/DUQkAG6AlKb/
-    
-    <script async src="//www.instagram.com/embed.js"></script>
+    'https://www.instagram.com/p/DUQkAG6AlKb/',
+    'https://www.instagram.com/p/DR3t16nAgWK/',
+    'https://www.instagram.com/p/DR7pDXzAlom/'
   ],
   
   // Fallback: Direkte Profile URL
