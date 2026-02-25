@@ -54,12 +54,38 @@ Die Seite präsentiert hochwertige Drohnenaufnahmen, Cinematic‑Videos, Projekt
 ---
 
 ## 📁 Projektstruktur
-/assets /images /videos
-/components header.html contact.html footer.html
-/css style.css
-/js animations.js lightbox.js
-index.html README.md
+assets/
+  images/
+    portfolio/
+      img1.svg
+      img2.svg
+      img3.svg
+      portfolio.json
+  videos/
+    portfolio-video-1.mp4
+    portfolio-video-2.mp4
+    portfolio-video-3.mp4
 
+components/
+  header.html
+  footer.html
+  portfolio.html
+  contact.html
+
+css/
+  style.css
+  variables.css
+  animations.css
+
+js/
+  main.js
+  portfolio.js
+  instagram.js
+  parallax.js
+
+index.html
+about.html
+contact.html
 
 
 ---

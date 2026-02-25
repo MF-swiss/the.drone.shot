@@ -59,20 +59,22 @@ fetch('assets/images/portfolio/portfolio.json')
         // Video-Container erstellen
         const videoContainer = document.createElement('div');
         videoContainer.classList.add('portfolio-video-container', 'fade-in');
+        videoContainer.setAttribute('data-video', item.src);
+        videoContainer.setAttribute('data-poster', item.poster);
         
-        // Video-Element
-        const video = document.createElement('video');
-        video.src = item.src;
-        video.poster = item.poster;
-        video.preload = 'metadata';
-        video.classList.add('portfolio-video');
+        // Poster Image initial anzeigen
+        const posterImg = document.createElement('img');
+        posterImg.src = item.poster;
+        posterImg.alt = item.title;
+        posterImg.classList.add('portfolio-video-poster');
+        posterImg.loading = 'lazy';
         
         // Play-Button Overlay
         const playButton = document.createElement('div');
         playButton.classList.add('play-button');
         playButton.innerHTML = '▶';
         
-        videoContainer.appendChild(video);
+        videoContainer.appendChild(posterImg);
         videoContainer.appendChild(playButton);
         
         el = videoContainer;
@@ -106,6 +108,47 @@ fetch('assets/images/portfolio/portfolio.json')
         el.addEventListener('click', () => openLightbox(galleryIndex));
       }
     });
+
+    // INTERSECTION OBSERVER FÜR VIDEO LAZY-LOADING
+    const videoContainers = document.querySelectorAll('.portfolio-video-container');
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const container = entry.target;
+        const videoSrc = container.getAttribute('data-video');
+        const poster = container.getAttribute('data-poster');
+
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          if (!container.classList.contains('loaded')) {
+            container.classList.add('loaded');
+            
+            // Leere Container
+            container.innerHTML = '';
+            
+            // Video-Element erstellen
+            const video = document.createElement('video');
+            video.src = videoSrc;
+            video.poster = poster;
+            video.autoplay = true;
+            video.muted = true;
+            video.loop = true;
+            video.playsinline = true;
+            video.classList.add('portfolio-video');
+            
+            container.appendChild(video);
+            
+            // Play-Button Overlay
+            const playButton = document.createElement('div');
+            playButton.classList.add('play-button');
+            playButton.innerHTML = '▶';
+            container.appendChild(playButton);
+          }
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    videoContainers.forEach(container => videoObserver.observe(container));
   })
   .catch(err => {
     console.error('Portfolio konnte nicht geladen werden:', err);
