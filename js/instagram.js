@@ -66,11 +66,17 @@ function displayInstagramEmbeds(postUrls) {
   container.innerHTML = '';
   
   postUrls.forEach(url => {
+    const postInfo = extractPostInfo(url);
+    if (!postInfo) {
+      console.warn('Ungültige Instagram-URL:', url);
+      return;
+    }
+
     const iframeContainer = document.createElement('div');
     iframeContainer.classList.add('instagram-embed-container', 'fade-in');
     
     const iframe = document.createElement('iframe');
-    iframe.src = `https://www.instagram.com/p/${extractPostId(url)}/embed/`;
+    iframe.src = `https://www.instagram.com/${postInfo.type}/${postInfo.id}/embed/`;
     iframe.width = '100%';
     iframe.height = '600';
     iframe.frameborder = '0';
@@ -88,10 +94,11 @@ function displayInstagramEmbeds(postUrls) {
   loadInstagramScript();
 }
 
-// Post-ID aus URL extrahieren
-function extractPostId(url) {
-  const match = url.match(/\/p\/([a-zA-Z0-9_-]+)\//);
-  return match ? match[1] : '';
+// Post-Typ und ID aus URL extrahieren (p oder reel)
+function extractPostInfo(url) {
+  const match = url.match(/\/(p|reel)\/([a-zA-Z0-9_-]+)\/?/);
+  if (!match) return null;
+  return { type: match[1], id: match[2] };
 }
 
 // Instagram Embed Script laden
