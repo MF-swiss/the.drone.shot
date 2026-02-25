@@ -1,5 +1,21 @@
 {
   "items": [
+
+  {
+    "title": "FPV Mountain Dive",
+    "category": "fpv",
+    "thumbnail": "assets/images/portfolio/img1.svg",
+    "description": "High‑speed FPV dive shot in the Swiss Alps.",
+    "link": "https://www.instagram.com/reel/DR3t16nAgWK/"
+  },
+  {
+    "title": "Cinematic Lake Shot",
+    "category": "cinematic",
+    "thumbnail": "assets/images/portfolio/img2.svg",
+    "description": "Smooth cinematic orbit with ND‑Filter.",
+    "link": "https://www.instagram.com/reel/DS700r9AnPj/"
+  }
+
     {
       "type": "video",
       "src": "assets/videos/portfolio-video-1.mp4",
