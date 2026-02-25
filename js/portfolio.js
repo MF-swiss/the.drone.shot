@@ -4,15 +4,90 @@ fetch("assets/images/portfolio/portfolio.json")
     const grid = document.querySelector(".portfolio-grid");
 
     items.forEach(item => {
-      const html = `
-        <div class="portfolio-item" data-category="${item.category}">
-          <img src="${item.thumbnail}" alt="${item.title}">
-          <h3>${item.title}</h3>
-          <p>${item.description}</p>
-          <a href="${item.link}" target="_blank">Zum Reel</a>
-        </div>
-      `;
+      let html = "";
+
+      // IMAGE ITEM
+      if (item.type === "image") {
+        html = `
+          <div class="portfolio-item" data-category="${item.category}">
+            <img 
+              src="${item.thumbnail}" 
+              alt="${item.title}" 
+              loading="lazy"
+            >
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+            <a href="${item.link}" target="_blank" class="portfolio-link">Zum Reel</a>
+          </div>
+        `;
+      }
+
+      // VIDEO ITEM
+      if (item.type === "video") {
+        html = `
+          <div class="portfolio-item" data-category="${item.category}">
+            <div 
+              class="portfolio-video-container"
+              data-video="${item.src}"
+              data-poster="${item.poster}"
+            >
+              <img 
+                src="${item.poster}" 
+                alt="${item.title}" 
+                class="portfolio-video-poster"
+                loading="lazy"
+              >
+              <div class="play-button">▶</div>
+            </div>
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+          </div>
+        `;
+      }
+
       grid.insertAdjacentHTML("beforeend", html);
     });
+
+    // INTERSECTION OBSERVER FOR VIDEOS
+    const videoContainers = document.querySelectorAll(".portfolio-video-container");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const container = entry.target;
+        const videoSrc = container.getAttribute("data-video");
+        const poster = container.getAttribute("data-poster");
+
+        // Wenn 50% sichtbar → Video laden
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          if (!container.classList.contains("loaded")) {
+            container.classList.add("loaded");
+
+            container.innerHTML = `
+              <video class="portfolio-video" autoplay muted playsinline loop>
+                <source src="${videoSrc}" type="video/mp4">
+              </video>
+            `;
+          }
+        } else {
+          // Wenn nicht sichtbar → Video entfernen
+          if (container.classList.contains("loaded")) {
+            container.classList.remove("loaded");
+
+            container.innerHTML = `
+              <img 
+                src="${poster}"
+                class="portfolio-video-poster"
+                loading="lazy"
+              >
+              <div class="play-button">▶</div>
+            `;
+          }
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    videoContainers.forEach(container => observer.observe(container));
   })
   .catch(err => console.error("Portfolio konnte nicht geladen werden:", err));
