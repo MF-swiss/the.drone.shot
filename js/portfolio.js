@@ -91,3 +91,4 @@ fetch("assets/images/portfolio/portfolio.json")
     videoContainers.forEach(container => observer.observe(container));
   })
   .catch(err => console.error("Portfolio konnte nicht geladen werden:", err));
+  
