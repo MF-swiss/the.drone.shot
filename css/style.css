@@ -259,15 +259,66 @@ a:hover {
 }
 
 .portfolio-item {
+  position: relative;
   background: var(--bg-dark);
   padding: 20px;
   border-radius: var(--radius);
-  transition: transform var(--transition), box-shadow var(--transition);
+  overflow: hidden;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.portfolio-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
-.portfolio-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+.portfolio-item img,
+.portfolio-video-container {
+  transition: transform .4s ease;
+}
+
+.portfolio-item:hover img,
+.portfolio-item:hover .portfolio-video-container {
+  transform: scale(1.05);
+}
+.portfolio-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(77, 163, 255, 0.25),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity .4s ease;
+  pointer-events: none;
+}
+
+.portfolio-item:hover::before {
+  opacity: 1;
+}
+
+.portfolio-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: left .7s ease;
+  pointer-events: none;
+}
+
+.portfolio-item:hover::after {
+  left: 120%;
 }
 
 .portfolio-item img {

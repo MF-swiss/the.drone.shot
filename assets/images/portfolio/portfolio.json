@@ -1,47 +1,94 @@
-[
-  {
-    "type": "image",
-    "title": "FPV Mountain Dive",
-    "category": "fpv",
-    "thumbnail": "assets/images/portfolio/img1.svg",
-    "alt": "FPV Mountain Dive",
-    "description": "High‑speed FPV dive shot in the Swiss Alps.",
-    "link": "https://www.instagram.com/reel/DR3t16nAgWK/"
-  },
-  {
-    "type": "image",
-    "title": "Cinematic Lake Shot",
-    "category": "cinematic",
-    "thumbnail": "assets/images/portfolio/img2.svg",
-    "alt": "Cinematic Lake Shot",
-    "description": "Smooth cinematic orbit with ND‑Filter.",
-    "link": "https://www.instagram.com/reel/DS700r9AnPj/"
-  },
-  {
-    "type": "video",
-    "title": "FPV Cinematic Flight",
-    "category": "fpv",
-    "src": "assets/videos/portfolio-video-1.mp4",
-    "poster": "assets/images/portfolio/img1.svg",
-    "alt": "FPV Cinematic Flight",
-    "description": "Dynamic FPV flight with smooth transitions."
-  },
-  {
-    "type": "video",
-    "title": "Immobilien Luftaufnahme",
-    "category": "realestate",
-    "src": "assets/videos/portfolio-video-2.mp4",
-    "poster": "assets/images/portfolio/img2.svg",
-    "alt": "Immobilien Luftaufnahme",
-    "description": "Aerial real estate showcase."
-  },
-  {
-    "type": "video",
-    "title": "Event Photography",
-    "category": "event",
-    "src": "assets/videos/portfolio-video-3.mp4",
-    "poster": "assets/images/portfolio/img3.svg",
-    "alt": "Event Photography",
-    "description": "Event coverage with cinematic drone shots."
-  }
-]
+fetch("assets/images/portfolio/portfolio.json")
+  .then(res => res.json())
+  .then(items => {
+    const grid = document.querySelector(".portfolio-grid");
+
+    items.forEach(item => {
+      let html = "";
+
+      // IMAGE ITEM
+      if (item.type === "image") {
+        html = `
+          <div class="portfolio-item" data-category="${item.category}">
+            <img 
+              src="${item.thumbnail}" 
+              alt="${item.title}" 
+              loading="lazy"
+            >
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+            <a href="${item.link}" target="_blank" class="portfolio-link">Zum Reel</a>
+          </div>
+        `;
+      }
+
+      // VIDEO ITEM
+      if (item.type === "video") {
+        html = `
+          <div class="portfolio-item" data-category="${item.category}">
+            <div class="portfolio-video-container" data-video="${item.src}">
+              <img 
+                src="${item.poster}" 
+                alt="${item.title}" 
+                class="portfolio-video-poster"
+                loading="lazy"
+              >
+              <div class="play-button">▶</div>
+            </div>
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+          </div>
+        `;
+      }
+
+      grid.insertAdjacentHTML("beforeend", html);
+    });
+
+    // INTERSECTION OBSERVER FOR VIDEOS
+    const videoContainers = document.querySelectorAll(".portfolio-video-container");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const container = entry.target;
+        const videoSrc = container.getAttribute("data-video");
+
+        // Wenn 50% sichtbar → Video laden
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          if (!container.classList.contains("loaded")) {
+            container.classList.add("loaded");
+
+            container.innerHTML = `
+              <video class="portfolio-video" autoplay muted playsinline loop>
+                <source src="${videoSrc}" type="video/mp4">
+              </video>
+            `;
+          }
+        } else {
+          // Wenn nicht sichtbar → Video entfernen (Performance!)
+          if (container.classList.contains("loaded")) {
+            container.classList.remove("loaded");
+
+            container.innerHTML = `
+              <img 
+                src="${container.getAttribute("data-poster") || "assets/images/portfolio/default.jpg"}"
+                class="portfolio-video-poster"
+                loading="lazy"
+              >
+              <div class="play-button">▶</div>
+            `;
+          }
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    videoContainers.forEach(container => {
+      // Poster speichern, damit wir es wiederherstellen können
+      const poster = container.querySelector("img").getAttribute("src");
+      container.setAttribute("data-poster", poster);
+
+      observer.observe(container);
+    });
+  })
+  .catch(err => console.error("Portfolio konnte nicht geladen werden:", err));
