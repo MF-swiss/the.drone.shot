@@ -279,30 +279,36 @@ a:hover {
 
 /* ==================== MASONRY GRID ==================== */
 .portfolio-grid {
-  column-count: 3;
-  column-gap: 30px;
-  padding: 40px 0;
-  max-width: 1400px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 40px;
+  max-width: 1200px;
   margin: 0 auto;
+  place-items: center;
 }
 
 @media (max-width: 900px) {
   .portfolio-grid {
-    column-count: 2;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
   }
 }
 
 @media (max-width: 600px) {
   .portfolio-grid {
-    column-count: 1;
+    grid-template-columns: 1fr;
+    max-width: 500px;
   }
 }
 
 /* Masonry Items */
 .portfolio-item {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  margin-bottom: 30px;
+  max-width: 450px;
+  margin: 0 auto;
   border-radius: 14px;
   overflow: hidden;
   background: #0f1115;
@@ -817,12 +823,13 @@ footer {
   }
 
   .portfolio-grid {
-    column-gap: 18px;
-    padding: 30px 0;
+    gap: 24px;
+    padding: 30px 20px;
+    max-width: 600px;
   }
 
   .portfolio-item {
-    margin-bottom: 22px;
+    max-width: 100%;
   }
 }
 
@@ -854,8 +861,9 @@ footer {
   }
 
   .portfolio-grid {
-    column-gap: 14px;
-    padding: 24px 0;
+    gap: 20px;
+    padding: 24px 16px;
+    max-width: 100%;
   }
 
   .portfolio-info {
