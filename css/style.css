@@ -156,8 +156,9 @@ a:hover {
   margin: 0;
   display: inline-block;
 
-  /* 3D Effekt */
-  transform: perspective(600px) translateZ(40px) rotateY(-6deg) rotateX(2deg);
+  /* 3D Effekt mit sanfter FPV-Wippe */
+  transform: perspective(600px) translateZ(40px);
+  animation: fpvTilt 5s ease-in-out infinite;
   text-shadow:
     0 2px 4px rgba(0,0,0,0.4),
     0 4px 10px rgba(0,0,0,0.35),
@@ -803,6 +804,19 @@ footer {
   25% { transform: translate(2px, -1px) rotateZ(0.5deg); }
   50% { transform: translate(-2px, 1px) rotateZ(-0.5deg); }
   75% { transform: translate(1px, 2px) rotateZ(0.3deg); }
+}
+
+/* Sanfte FPV-Wippe für Hero-Titel */
+@keyframes fpvTilt {
+  0% {
+    transform: perspective(600px) translateZ(40px) rotateY(-6deg) rotateX(2deg);
+  }
+  50% {
+    transform: perspective(600px) translateZ(40px) rotateY(6deg) rotateX(-2deg);
+  }
+  100% {
+    transform: perspective(600px) translateZ(40px) rotateY(-6deg) rotateX(2deg);
+  }
 }
 
 /* ==================== RESPONSIVE ==================== */
