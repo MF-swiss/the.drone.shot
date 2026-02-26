@@ -12,23 +12,23 @@
 /* FPV SCROLL REVEAL */
 .fpv-reveal {
   opacity: 0;
-  transform: translateX(80px) rotate(1deg);
+  transform: translateX(80px) rotate(6deg) rotateY(8deg);
   filter: blur(6px);
-  transition: opacity 0.9s ease-out, 
-              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: opacity 0.9s ease-out,
+              transform 1.3s cubic-bezier(0.16, 1, 0.3, 1),
               filter 0.8s ease-out;
 }
 
 .fpv-reveal.left {
-  transform: translateX(-80px) rotate(-1deg);
+  transform: translateX(-80px) rotate(-6deg);
 }
 
 .fpv-reveal.up {
-  transform: translateY(80px) rotate(1deg);
+  transform: translateY(80px) rotate(6deg);
 }
 
 .fpv-reveal.visible {
   opacity: 1;
-  transform: translateX(0) translateY(0) rotate(0);
+  transform: translateX(0) translateY(0) rotate(0) rotateY(0);
   filter: blur(0);
 }
