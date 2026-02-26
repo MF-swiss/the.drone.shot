@@ -41,7 +41,7 @@ fetch("assets/images/portfolio/portfolio.json")
                 decoding="async"
                 fetchpriority="low"
               >
-              <div class="play-button">▶</div>
+              <div class="play-button">🔇</div>
             </div>
 
             <div class="portfolio-info">
@@ -104,6 +104,9 @@ fetch("assets/images/portfolio/portfolio.json")
                   posterImg.style.opacity = "0";
                   posterImg.style.pointerEvents = "none";
                 }
+                if (playButton) {
+                  playButton.textContent = "🔇";
+                }
               }, { once: true });
             }
           }
@@ -126,6 +129,27 @@ fetch("assets/images/portfolio/portfolio.json")
     });
 
     videoContainers.forEach(container => observer.observe(container));
+
+    videoContainers.forEach(container => {
+      container.addEventListener("click", () => {
+        const videoEl = container.querySelector(".portfolio-video");
+        const playButton = container.querySelector(".play-button");
+        if (!videoEl) {
+          return;
+        }
+
+        videoEl.muted = !videoEl.muted;
+
+        if (!videoEl.muted) {
+          videoEl.volume = 0.8;
+          videoEl.play().catch(() => {});
+        }
+
+        if (playButton) {
+          playButton.textContent = videoEl.muted ? "🔇" : "🔊";
+        }
+      });
+    });
 
      /* ============================
        FADE-IN OBSERVER FOR ITEMS
