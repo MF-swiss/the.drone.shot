@@ -157,7 +157,7 @@ a:hover {
   display: inline-block;
 
   /* 3D Effekt */
-  transform: perspective(600px) translateZ(40px);
+  transform: perspective(600px) translateZ(40px) rotateY(-6deg) rotateX(2deg);
   text-shadow:
     0 2px 4px rgba(0,0,0,0.4),
     0 4px 10px rgba(0,0,0,0.35),
