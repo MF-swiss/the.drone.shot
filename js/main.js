@@ -241,34 +241,60 @@ createLightbox();
 // KONTAKT FORMULAR HANDLER
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-    
-    // Email via FormSubmit.co oder ähnlichem Service senden
-    // Für jetzt: nur Daten validieren und User-Feedback geben
-    console.log('Kontaktformular Daten:', data);
-    
     const messageEl = document.getElementById('formMessage');
-    if (messageEl) {
-      messageEl.style.display = 'block';
-      messageEl.textContent = '✓ Danke! Nachricht wurde empfangen. Ich melde mich bald bei dir.';
-      messageEl.style.color = 'var(--primary-blue)';
-      contactForm.reset();
-      
-      setTimeout(() => {
-        messageEl.style.display = 'none';
-      }, 5000);
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    
+    // Button während des Sendens deaktivieren
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wird gesendet...';
     }
     
-    // TODO: Mit echtem Backend verbinden
-    // fetch('/api/contact', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(data)
-    // })
+    try {
+      const formData = new FormData(contactForm);
+      
+      // An Formspree senden
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        // Erfolg
+        if (messageEl) {
+          messageEl.style.display = 'block';
+          messageEl.textContent = '✓ Danke! Deine Nachricht wurde erfolgreich gesendet.';
+          messageEl.style.color = 'var(--primary-blue)';
+        }
+        contactForm.reset();
+        
+        setTimeout(() => {
+          if (messageEl) messageEl.style.display = 'none';
+        }, 5000);
+      } else {
+        throw new Error('Formular konnte nicht gesendet werden');
+      }
+    } catch (error) {
+      // Fehler
+      console.error('Formular Fehler:', error);
+      if (messageEl) {
+        messageEl.style.display = 'block';
+        messageEl.textContent = '⚠ Es gab ein Problem beim Senden. Bitte versuche es erneut.';
+        messageEl.style.color = '#ff4444';
+      }
+    } finally {
+      // Button wieder aktivieren
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Nachricht senden';
+      }
+    }
   });
 }
 

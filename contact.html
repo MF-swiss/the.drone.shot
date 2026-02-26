@@ -19,7 +19,7 @@
     </div>
 
     <!-- Kontaktformular -->
-    <form class="contact-form" action="https://formspree.io/f/xgoldkvl" method="POST">
+    <form id="contactForm" class="contact-form" action="https://formspree.io/f/xgoldkvl" method="POST">
 
       <div class="form-row">
         <input type="text" name="Name" placeholder="Name" required>
@@ -41,7 +41,7 @@
 
       <button type="submit" class="btn-primary">Nachricht senden</button>
 
-      <p class="form-success" style="display:none; color: var(--primary-blue); margin-top: 10px;">
+      <p id="formMessage" class="form-success" style="display:none; color: var(--primary-blue); margin-top: 10px;">
         Danke! Deine Nachricht wurde erfolgreich gesendet.
       </p>
 
