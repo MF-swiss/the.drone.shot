@@ -170,6 +170,7 @@ function createLightbox() {
   lightbox.classList.add('lightbox');
   lightbox.innerHTML = `
     <span class="lightbox-close">✕</span>
+    <span class="lightbox-fullscreen">⛶</span>
     <span class="lightbox-prev">‹</span>
     <span class="lightbox-next">›</span>
     <div class="lightbox-media">
@@ -180,6 +181,7 @@ function createLightbox() {
   document.body.appendChild(lightbox);
 
   lightbox.querySelector('.lightbox-close').onclick = () => closeLightbox();
+  lightbox.querySelector('.lightbox-fullscreen').onclick = () => toggleLightboxFullscreen();
   lightbox.querySelector('.lightbox-prev').onclick = () => showPrev();
   lightbox.querySelector('.lightbox-next').onclick = () => showNext();
 }
@@ -221,7 +223,26 @@ function closeLightbox() {
   if (video) {
     video.pause();
   }
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  }
   lightbox.classList.remove('active');
+}
+
+function toggleLightboxFullscreen() {
+  const media = lightbox.querySelector('.lightbox-media');
+  if (!media) return;
+
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+    return;
+  }
+
+  if (media.requestFullscreen) {
+    media.requestFullscreen();
+  } else if (media.webkitRequestFullscreen) {
+    media.webkitRequestFullscreen();
+  }
 }
 
 // Navigation
