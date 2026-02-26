@@ -19,7 +19,7 @@
     </div>
 
     <!-- Kontaktformular -->
-    <form class="contact-form" action="https://formspree.io/f/DEINE-ID" method="POST">
+    <form class="contact-form" action="https://formspree.io/f/xgoldkvl" method="POST">
 
       <div class="form-row">
         <input type="text" name="Name" placeholder="Name" required>
@@ -36,6 +36,9 @@
 
       <textarea name="Nachricht" rows="6" placeholder="Nachricht" required></textarea>
 
+      <!-- 🔥 HIER kommt das Redirect-Feld hin -->
+      <input type="hidden" name="_redirect" value="https://mf-swiss.github.io/the.drone.shot/thankyou.html">
+
       <button type="submit" class="btn-primary">Nachricht senden</button>
 
       <p class="form-success" style="display:none; color: var(--primary-blue); margin-top: 10px;">
@@ -43,6 +46,3 @@
       </p>
 
     </form>
-
-  </div>
-</section>
