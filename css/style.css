@@ -668,6 +668,20 @@ a:hover {
   background: rgba(77, 163, 255, 0.1);
 }
 
+/* Select Styling */
+.contact-form select {
+  appearance: none; /* Entfernt Browser-Standard */
+  background: rgba(77, 163, 255, 0.05);
+  border: 1px solid rgba(77, 163, 255, 0.2);
+  color: var(--text-light);
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='rgba(255,255,255,0.7)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 18px;
+  padding-right: 45px; /* Platz für Pfeil */
+}
+
 /* ==================== FOOTER ==================== */
 footer {
   background: rgba(10, 13, 18, 0.8);

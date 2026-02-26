@@ -93,7 +93,13 @@
 
   fetch("components/contact.html")
     .then(res => res.text())
-    .then(data => document.getElementById("contact").innerHTML = data);
+    .then(data => {
+      document.getElementById("contact").innerHTML = data;
+      // Formular-Handler nach dem Laden initialisieren
+      if (window.initContactForm) {
+        window.initContactForm();
+      }
+    });
 </script>
 
 </body>

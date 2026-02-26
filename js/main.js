@@ -239,8 +239,10 @@ function showNext() {
 createLightbox();
 
 // KONTAKT FORMULAR HANDLER
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
+function initContactForm() {
+  const contactForm = document.getElementById('contactForm');
+  if (!contactForm) return;
+  
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -297,6 +299,12 @@ if (contactForm) {
     }
   });
 }
+
+// Mache die Funktion global verfügbar
+window.initContactForm = initContactForm;
+
+// Versuche auch beim Laden zu initialisieren (falls Formular bereits da ist)
+document.addEventListener('DOMContentLoaded', initContactForm);
 
 // KEYBOARD NAVIGATION FÜR LIGHTBOX
 document.addEventListener('keydown', (e) => {

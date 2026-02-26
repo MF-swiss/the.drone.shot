@@ -13,7 +13,7 @@
       <p class="contact-note">Ich freue mich auf deine Nachricht.</p>
     </div>
 
-    <form class="contact-form" action="mailto:the.drone.shot@outlook.com" method="POST" enctype="text/plain">
+    <form id="contactForm" class="contact-form" action="https://formspree.io/f/xgoldkvl" method="POST">
       <div class="form-row">
         <input type="text" name="Name" placeholder="Name" required>
         <input type="email" name="Email" placeholder="E-Mail" required>
@@ -29,7 +29,13 @@
 
       <textarea name="Nachricht" rows="6" placeholder="Nachricht" required></textarea>
 
+      <input type="hidden" name="_redirect" value="https://mf-swiss.github.io/the.drone.shot/index.html#contact">
+
       <button type="submit" class="btn-primary">Nachricht senden</button>
+
+      <p id="formMessage" class="form-success" style="display:none; color: var(--primary-blue); margin-top: 10px;">
+        Danke! Deine Nachricht wurde erfolgreich gesendet.
+      </p>
     </form>
 
   </div>
