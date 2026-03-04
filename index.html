@@ -99,7 +99,10 @@
   fetch("components/contact.html")
     .then(res => res.text())
     .then(data => {
-      document.getElementById("contact").innerHTML = data;
+      const contactSection = document.getElementById("contact");
+      contactSection.innerHTML = data;
+      // Animation für nachgeladene Elemente aktivieren
+      contactSection.classList.add('visible');
       // Formular-Handler nach dem Laden initialisieren
       if (window.initContactForm) {
         window.initContactForm();

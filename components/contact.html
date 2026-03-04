@@ -1,42 +1,40 @@
-<section class="contact fpv-reveal">
-  <div class="contact-inner">
+<div class="contact-inner">
 
-    <div class="contact-text">
-      <h2>Kontakt</h2>
-      <p>Hast du ein Projekt, eine Idee oder möchtest einfach mehr erfahren?
-      Schreib mir – ich melde mich so schnell wie möglich.</p>
+  <div class="contact-text">
+    <h2>Kontakt</h2>
+    <p>Hast du ein Projekt, eine Idee oder möchtest einfach mehr erfahren?
+    Schreib mir – ich melde mich so schnell wie möglich.</p>
 
-      <p class="contact-mail">
-        <a href="mailto:the.drone.shot@outlook.com">the.drone.shot@outlook.com</a>
-      </p>
+    <p class="contact-mail">
+      <a href="mailto:the.drone.shot@outlook.com">the.drone.shot@outlook.com</a>
+    </p>
 
-      <p class="contact-note">Ich freue mich auf deine Nachricht.</p>
+    <p class="contact-note">Ich freue mich auf deine Nachricht.</p>
+  </div>
+
+  <form id="contactForm" class="contact-form" action="https://formspree.io/f/xgoldkvl" method="POST">
+    <div class="form-row">
+      <input type="text" name="Name" placeholder="Name" required>
+      <input type="email" name="Email" placeholder="E-Mail" required>
     </div>
 
-    <form id="contactForm" class="contact-form" action="https://formspree.io/f/xgoldkvl" method="POST">
-      <div class="form-row">
-        <input type="text" name="Name" placeholder="Name" required>
-        <input type="email" name="Email" placeholder="E-Mail" required>
-      </div>
+    <select name="Betreff" required>
+      <option value="">Betreff auswählen</option>
+      <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+      <option value="Drohnenflug">Drohnenflug</option>
+      <option value="Videoproduktion">Videoproduktion</option>
+      <option value="Zusammenarbeit">Zusammenarbeit</option>
+    </select>
 
-      <select name="Betreff" required>
-        <option value="">Betreff auswählen</option>
-        <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
-        <option value="Drohnenflug">Drohnenflug</option>
-        <option value="Videoproduktion">Videoproduktion</option>
-        <option value="Zusammenarbeit">Zusammenarbeit</option>
-      </select>
+    <textarea name="Nachricht" rows="6" placeholder="Nachricht" required></textarea>
 
-      <textarea name="Nachricht" rows="6" placeholder="Nachricht" required></textarea>
+    <input type="hidden" name="_redirect" value="https://mf-swiss.github.io/the.drone.shot/index.html#contact">
 
-      <input type="hidden" name="_redirect" value="https://mf-swiss.github.io/the.drone.shot/index.html#contact">
+    <button type="submit" class="btn-primary">Nachricht senden</button>
 
-      <button type="submit" class="btn-primary">Nachricht senden</button>
+    <p id="formMessage" class="form-success" style="display:none; color: var(--primary-blue); margin-top: 10px;">
+      Danke! Deine Nachricht wurde erfolgreich gesendet.
+    </p>
+  </form>
 
-      <p id="formMessage" class="form-success" style="display:none; color: var(--primary-blue); margin-top: 10px;">
-        Danke! Deine Nachricht wurde erfolgreich gesendet.
-      </p>
-    </form>
-
-  </div>
-</section>
+</div>
