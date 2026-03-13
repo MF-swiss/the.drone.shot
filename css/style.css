@@ -1,8 +1,7 @@
 /* ==================== BASE STYLES ==================== */
-
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 15px;
   background: var(--bg-dark);
   color: var(--text-light);
   font-family: var(--font-main);
@@ -86,8 +85,8 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: rgba(77, 163, 255, 0.1);
   transition: all var(--transition);
