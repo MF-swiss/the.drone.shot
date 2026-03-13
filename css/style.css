@@ -1,7 +1,7 @@
 /* ==================== BASE STYLES ==================== */
 body {
   margin: 0;
-  padding: 0 15px;
+  padding: 0 0px;
   background: var(--bg-dark);
   color: var(--text-light);
   font-family: var(--font-main);
@@ -98,8 +98,8 @@ a:hover {
 }
 
 .social-link img {
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
 }
 
 /* ==================== HERO SECTION ==================== */
