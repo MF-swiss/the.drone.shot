@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Impressum von the.drone.shot">
+  <title>Impressum | the.drone.shot</title>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
+</head>
+<body class="legal-page">
+  <div id="header"></div>
+
+  <main class="legal-container">
+    <article class="legal-card">
+      <h1>Impressum</h1>
+
+      <h2>Anbieterkennzeichnung</h2>
+      <p>
+        Marco Fritsche<br>
+        the.drone.shot<br>
+        Fuchsbüelstrasse / 00<br>
+        9030 / Abtwil SG<br>
+        Schweiz
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        E-Mail: <a href="mailto:the.drone.shot@outlook.com">the.drone.shot@outlook.com</a>
+      </p>
+
+      <h2>Haftung für Inhalte</h2>
+      <p>
+        Die Inhalte dieser Website wurden mit grösster Sorgfalt erstellt. Für die Richtigkeit,
+        Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.
+      </p>
+
+      <h2>Haftung für Links</h2>
+      <p>
+        Diese Website kann Links zu externen Websites Dritter enthalten, auf deren Inhalte kein
+        Einfluss besteht. Für diese fremden Inhalte wird daher keine Gewähr übernommen.
+      </p>
+
+      <h2>Urheberrecht</h2>
+      <p>
+        Die auf dieser Website veröffentlichten Inhalte, Bilder und Videos unterliegen dem
+        Urheberrecht. Jede Verwertung ausserhalb der Grenzen des Urheberrechts bedarf der
+        vorherigen schriftlichen Zustimmung.
+      </p>
+    </article>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    fetch("components/header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header").innerHTML = data);
+
+    fetch("components/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer").innerHTML = data);
+  </script>
+</body>
+</html>

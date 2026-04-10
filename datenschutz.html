@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Datenschutzerklärung von the.drone.shot">
+  <title>Datenschutz | the.drone.shot</title>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
+</head>
+<body class="legal-page">
+  <div id="header"></div>
+
+  <main class="legal-container">
+    <article class="legal-card">
+      <h1>Datenschutzerklärung</h1>
+
+      <h2>1. Allgemeine Hinweise</h2>
+      <p>
+        Der Schutz Ihrer persönlichen Daten ist wichtig. Personenbezogene Daten werden vertraulich
+        und entsprechend den geltenden Datenschutzvorschriften (insbesondere dem Schweizer
+        Datenschutzgesetz, DSG, sowie – sofern anwendbar – der DSGVO) behandelt.
+      </p>
+
+      <h2>2. Verantwortliche Stelle</h2>
+      <p>
+        Marco Fritsche<br>
+        THE DRONE SHOT<br>
+        Fuchsbüelstrasse / 00<br>
+        9030 / Abtwil SG, Schweiz<br>
+        E-Mail: <a href="mailto:the.drone.shot@outlook.com">the.drone.shot@outlook.com</a>
+      </p>
+
+      <h2>3. Hosting und Server-Logfiles</h2>
+      <p>
+        Beim Aufruf dieser Website werden durch den Hosting-Provider automatisch technische
+        Informationen in sogenannten Server-Logfiles erfasst (z. B. IP-Adresse, Datum/Uhrzeit,
+        Browsertyp, Betriebssystem, Referrer-URL). Die Verarbeitung erfolgt zur Sicherstellung
+        der Stabilität und Sicherheit des Webangebots.
+      </p>
+      <p>
+        Hosting-Provider: GitHub Pages
+      </p>
+
+      <h2>4. Cookies und ähnliche Technologien</h2>
+      <p>
+        Diese Website setzt primär technisch erforderliche Funktionen ein. Sofern externe Inhalte
+        geladen werden, können durch Drittanbieter Cookies oder ähnliche Technologien gesetzt
+        werden. Details dazu finden Sie in den Abschnitten zu externen Diensten.
+      </p>
+
+      <h2>5. Kontaktaufnahme</h2>
+      <p>
+        Wenn Sie per Kontaktformular oder E-Mail Kontakt aufnehmen, werden Ihre Angaben zur
+        Bearbeitung der Anfrage gespeichert und verarbeitet.
+      </p>
+      <p>
+        Für das Kontaktformular wird der Dienst Formspree verwendet
+        (<a href="https://formspree.io" target="_blank" rel="noopener noreferrer">formspree.io</a>). Dabei
+        werden die von Ihnen eingegebenen Formulardaten an Formspree übermittelt und dort
+        verarbeitet.
+      </p>
+
+      <h2>6. Externe Dienste</h2>
+      <p>
+        Diese Website nutzt externe Inhalte und Dienste (z. B. Instagram-Einbettungen). Beim Laden
+        dieser Inhalte kann Ihre IP-Adresse an die jeweiligen Anbieter übermittelt werden.
+      </p>
+      <ul>
+        <li>
+          Instagram (Meta Platforms):
+          <a href="https://privacycenter.instagram.com/policy" target="_blank" rel="noopener noreferrer">
+            Datenschutzrichtlinie
+          </a>
+        </li>
+        <li>
+          Formspree:
+          <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
+            Datenschutzerklärung
+          </a>
+        </li>
+      </ul>
+
+      <h2>7. Aufbewahrungsdauer</h2>
+      <p>
+        Personenbezogene Daten werden nur so lange gespeichert, wie es für den jeweiligen Zweck
+        erforderlich ist oder gesetzliche Aufbewahrungsfristen bestehen.
+      </p>
+
+      <h2>8. Ihre Rechte</h2>
+      <ul>
+        <li>Auskunft über gespeicherte Daten</li>
+        <li>Berichtigung unrichtiger Daten</li>
+        <li>Löschung oder Einschränkung der Verarbeitung</li>
+        <li>Widerspruch gegen die Verarbeitung</li>
+      </ul>
+      <p>
+        Zur Ausübung Ihrer Rechte genügt eine formlose Nachricht an:
+        <a href="mailto:the.drone.shot@outlook.com">the.drone.shot@outlook.com</a>
+      </p>
+
+      <h2>9. Datensicherheit</h2>
+      <p>
+        Es werden angemessene technische und organisatorische Sicherheitsmassnahmen eingesetzt,
+        um Ihre Daten gegen Manipulation, Verlust oder unbefugten Zugriff zu schützen.
+      </p>
+
+      <h2>10. Änderungen dieser Datenschutzerklärung</h2>
+      <p>
+        Diese Datenschutzerklärung kann angepasst werden, wenn sich gesetzliche Anforderungen
+        oder die angebotenen Dienste ändern.
+      </p>
+
+      <h2>11. Stand</h2>
+      <p>Stand dieser Datenschutzerklärung: April 2026</p>
+
+    </article>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    fetch("components/header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header").innerHTML = data);
+
+    fetch("components/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer").innerHTML = data);
+  </script>
+</body>
+</html>
