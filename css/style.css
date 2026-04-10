@@ -233,26 +233,29 @@ a:hover {
   margin-top: 20px;
 }
 
-.hero-actions .btn-primary {
+.hero-actions .btn-primary,
+.hero-actions .btn-secondary {
   margin-top: 0;
 }
 
 .btn-secondary {
   display: inline-block;
   padding: 12px 40px;
-  border: 1px solid rgba(77, 163, 255, 0.45);
+  background: var(--primary-blue);
+  color: var(--bg-dark);
+  border: none;
   border-radius: var(--radius);
-  color: var(--text-light);
-  background: rgba(77, 163, 255, 0.08);
   font-weight: 600;
+  cursor: pointer;
   transition: all var(--transition);
+  text-decoration: none;
 }
 
 .btn-secondary:hover {
-  color: var(--text-light);
+  color: var(--bg-dark);
   transform: translateY(-2px);
-  border-color: var(--primary-blue);
-  box-shadow: 0 10px 30px rgba(77,163,255,0.2);
+  box-shadow: 0 10px 30px rgba(77,163,255,0.3);
+  background: #6bb3ff;
 }
 
 /* SCROLL INDICATOR */
