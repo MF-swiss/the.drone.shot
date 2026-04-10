@@ -225,6 +225,36 @@ a:hover {
   background: #6bb3ff;
 }
 
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.hero-actions .btn-primary {
+  margin-top: 0;
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 12px 40px;
+  border: 1px solid rgba(77, 163, 255, 0.45);
+  border-radius: var(--radius);
+  color: var(--text-light);
+  background: rgba(77, 163, 255, 0.08);
+  font-weight: 600;
+  transition: all var(--transition);
+}
+
+.btn-secondary:hover {
+  color: var(--text-light);
+  transform: translateY(-2px);
+  border-color: var(--primary-blue);
+  box-shadow: 0 10px 30px rgba(77,163,255,0.2);
+}
+
 /* SCROLL INDICATOR */
 .scroll-indicator {
   position: absolute;
@@ -1050,8 +1080,18 @@ footer {
   .hero-title {
     font-size: 1.8rem;
   }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
   
   .btn-primary {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+
+  .btn-secondary {
     padding: 10px 25px;
     font-size: 0.9rem;
   }

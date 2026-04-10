@@ -11,7 +11,7 @@
 
 **Professional drone cinematography portfolio showcasing breathtaking aerial perspectives**
 
-[🌐 Live Demo](https://mf-swiss.github.io/the.drone.shot/) • [📧 Contact](mailto:the.drone.shot@outlook.com) • [📱 Instagram](#)
+[🌐 Live Demo](https://mf-swiss.github.io/the.drone.shot/) • [📧 Contact](mailto:the.drone.shot@outlook.com) • [📱 Instagram](https://www.instagram.com/the.drone.shot/)
 
 ---
 
@@ -57,6 +57,17 @@
 - Professional error handling
 - No backend required
 
+### ⭐ **Google Reviews CTA**
+- Dedicated review block below the contact form
+- Direct Google review link for faster customer feedback
+- Built-in WhatsApp and Facebook sharing links
+- QR code generation for easy offline sharing (print/flyer use)
+
+### ⚖️ **Legal & Trust Elements**
+- Dedicated `impressum.html` and `datenschutz.html` pages
+- Reusable footer component with legal links
+- Better trust signaling through transparency and review flow
+
 ### 🎨 **Modern UI/UX**
 - Dark theme with gradient accents
 - Custom CSS animations and transitions
@@ -86,6 +97,8 @@ the.drone.shot/
 ├── 📄 index.html              # Main landing page
 ├── 📄 about.html              # About page
 ├── 📄 contact.html            # Standalone contact page
+├── 📄 impressum.html          # Legal notice page
+├── 📄 datenschutz.html        # Privacy policy page
 ├── 📄 README.md               # Project documentation
 ├── 📄 LICENSE                 # Copyright & license
 │
@@ -187,6 +200,18 @@ The contact form uses Formspree for email delivery. To configure:
    ```html
    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
    ```
+
+### ⭐ Google Review Link
+
+Customer review link currently used in `components/contact.html`:
+
+```text
+https://g.page/r/CSOZZ38InMBAEBM/review
+```
+
+The contact component also includes:
+- Share links for WhatsApp and Facebook
+- A QR code image for quick review access on mobile devices
 
 ### 📱 Instagram Feed
 
@@ -292,6 +317,11 @@ This site is deployed using GitHub Pages. To deploy your own version:
 - Ensure correct file paths in component loader
 - Verify local server is running (avoid `file://` protocol)
 
+### Google review button / QR not visible
+- Ensure `components/contact.html` is loaded correctly on the page
+- Check ad/script blockers (can block external QR image providers)
+- Verify internet connection for external links/QR rendering
+
 ---
 
 ## 📝 Best Practices
@@ -342,7 +372,7 @@ See [LICENSE](LICENSE) file for full details.
 ### 📞 Contact & Connect
 
 - 📧 **Email**: [the.drone.shot@outlook.com](mailto:the.drone.shot@outlook.com)
-- 📸 **Instagram**: [@the.drone.shot](#)
+- 📸 **Instagram**: [@the.drone.shot](https://www.instagram.com/the.drone.shot/)
 - 🌐 **Website**: [mf-swiss.github.io/the.drone.shot](https://mf-swiss.github.io/the.drone.shot/)
 - 💼 **GitHub**: [@MF-swiss](https://github.com/MF-swiss)
 
